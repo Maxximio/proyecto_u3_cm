@@ -34,6 +34,13 @@ public class HotelRepositoryImpl implements IHotelRepository{
 				+ "where ha.tipo =: tipoDato", Hotel.class);
 		//se puede poner inner join o solo join
 		myQuery.setParameter("tipoDato", tipoHabitacion);
+		
+		///taller 30
+		List<Hotel> hoteles=myQuery.getResultList();//solo hacemos esto para traer habitaciones
+		for(Hotel h:hoteles) {//0bajo demanda
+			h.getHabitaciones().size();
+		}
+		
 		return myQuery.getResultList();
 	}
 
@@ -60,15 +67,22 @@ public class HotelRepositoryImpl implements IHotelRepository{
 
 	@Override
 	public List<Hotel> buscarHotelJoinWhere(String tipoHabitacion) {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery< Hotel> myQuery=this.entityManager.createQuery("select h from Hotel h, Habitacion ha where h =ha.hotel and ha.tipo=:tipoDato",Hotel.class);
+		myQuery.setParameter("tipoDato", tipoHabitacion);
+		return myQuery.getResultList();
 	}
 
 
 	@Override
 	public List<Hotel> buscarHotelJoinFetch(String tipoHabitacion) {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Hotel> myQuery=this.entityManager.createQuery(""
+				+ "select h from Hotel h join fetch h.habitacion ha "
+				+ "where ha.tipo =: tipoDato", Hotel.class);
+		
+		myQuery.setParameter("tipoDato", tipoHabitacion);
+		
+		
+		return myQuery.getResultList();
 	}
 
 

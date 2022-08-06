@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class Hotel {
 	@Column(name = "hote_direccion")
 	private String direccion;
 	
-	@OneToMany(mappedBy = "hotel")//,cascade = CascadeType.ALL
+	@OneToMany(mappedBy = "hotel",cascade = CascadeType.ALL,fetch = FetchType.LAZY)//,cascade = CascadeType.ALL
 	private List<Habitacion> habitacion;
 	
 	//set y get
@@ -60,8 +61,6 @@ public class Hotel {
 	//to string
 	@Override
 	public String toString() {
-		return "Hotel [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion 
-				+ "]";
+		return "Hotel [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion +"]";
 	}
-	
 }
