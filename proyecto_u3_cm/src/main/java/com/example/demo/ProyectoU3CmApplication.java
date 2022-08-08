@@ -35,26 +35,39 @@ public class ProyectoU3CmApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 	
+		/////////////////tarea 27
+		
+		log.info("------where----");
+		List<Factura> lista=this.facturaService.buscarJoinWhereService(new BigDecimal(150));
+		for(Factura fact: lista) {
+			log.info("imprimiendo where----"+fact);
+		}
+		
+		log.info("------fetch----");
+		List<Factura> lista2=this.facturaService.buscarJoinFetchService(new BigDecimal(150));
+		for(Factura fact: lista2) {
+			log.info("imprimiendo fetch----"+fact);
+		}
+		
 		/////////////////tarea 26
 		
-		log.info("------inner----");
-		List<Factura> lista=this.facturaService.buscarInnerJoinService(new BigDecimal(150));
-		for(Factura fact: lista) {
-			log.info("imprimiendo----"+fact);
-		}
-		
-		log.info("------right----");
-		List<Factura> lista2=this.facturaService.buscarOuterJoinRightService(new BigDecimal(150));
-		for(Factura fact: lista2) {
-			log.info("imprimiendo----"+fact);
-		}
-		
-		log.info("------left----");
-		List<Factura> lista3=this.facturaService.buscarOuterJoinLeftService(new BigDecimal(150));
-		for(Factura fact: lista3) {
-			log.info("imprimiendo----"+fact);
-		}
-		
+//		log.info("------inner----");
+//		List<Factura> lista=this.facturaService.buscarInnerJoinService(new BigDecimal(150));
+//		for(Factura fact: lista) {
+//			log.info("imprimiendo----"+fact);
+//		}
+//		
+//		log.info("------right----");
+//		List<Factura> lista2=this.facturaService.buscarOuterJoinRightService(new BigDecimal(150));
+//		for(Factura fact: lista2) {
+//			log.info("imprimiendo----"+fact);
+//		}
+//		
+//		log.info("------left----");
+//		List<Factura> lista3=this.facturaService.buscarOuterJoinLeftService(new BigDecimal(150));
+//		for(Factura fact: lista3) {
+//			log.info("imprimiendo----"+fact);
+//		}
 		
 		/////////////////taller 30
 		

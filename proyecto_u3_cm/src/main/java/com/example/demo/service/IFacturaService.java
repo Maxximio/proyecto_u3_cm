@@ -17,4 +17,10 @@ public interface IFacturaService {
 	
 	public List<Factura> buscarOuterJoinLeftService(BigDecimal subtotal);
 	
+	//tarea 27
+	
+	public List<Factura> buscarJoinWhereService(BigDecimal subtotal);
+		
+	public List<Factura> buscarJoinFetchService(BigDecimal subtotal);
+	
 }

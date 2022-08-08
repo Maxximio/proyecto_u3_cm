@@ -32,8 +32,17 @@ public class FacturaServiceImpl implements IFacturaService{
 
 	@Override
 	public List<Factura> buscarOuterJoinLeftService(BigDecimal subtotal) {
-		// TODO Auto-generated method stub
 		return this.facturaRepo.buscarOuterJoinLeft(subtotal);
+	}
+
+	@Override
+	public List<Factura> buscarJoinWhereService(BigDecimal subtotal) {
+		return this.facturaRepo.buscarJoinWhere(subtotal);
+	}
+
+	@Override
+	public List<Factura> buscarJoinFetchService(BigDecimal subtotal) {
+		return this.facturaRepo.buscarJoinFetch(subtotal);
 	}
 
 }
