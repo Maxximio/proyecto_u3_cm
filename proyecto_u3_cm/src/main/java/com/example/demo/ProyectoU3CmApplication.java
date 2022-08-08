@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +8,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.repository.model.Factura;
 import com.example.demo.repository.model.Habitacion;
 import com.example.demo.repository.model.Hotel;
+import com.example.demo.service.IFacturaService;
 import com.example.demo.service.IHotelService;
 
 import org.slf4j.Logger;
@@ -22,39 +25,63 @@ public class ProyectoU3CmApplication implements CommandLineRunner{
 	@Autowired
 	private IHotelService hotelService;
 	
+	@Autowired
+	private IFacturaService facturaService;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU3CmApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
+	
+		/////////////////tarea 26
+		
+		log.info("------inner----");
+		List<Factura> lista=this.facturaService.buscarInnerJoinService(new BigDecimal(150));
+		for(Factura fact: lista) {
+			log.info("imprimiendo----"+fact);
+		}
+		
+		log.info("------right----");
+		List<Factura> lista2=this.facturaService.buscarOuterJoinRightService(new BigDecimal(150));
+		for(Factura fact: lista2) {
+			log.info("imprimiendo----"+fact);
+		}
+		
+		log.info("------left----");
+		List<Factura> lista3=this.facturaService.buscarOuterJoinLeftService(new BigDecimal(150));
+		for(Factura fact: lista3) {
+			log.info("imprimiendo----"+fact);
+		}
+		
 		
 		/////////////////taller 30
 		
-		log.info("------Where----");
-		List<Hotel> lista=this.hotelService.buscarHotelJoinWhereService("Familiar");
-		for(Hotel h: lista) {
-			log.info("imprimiendo---- "+h.getNombre()+" "+h.getDireccion());
-		}
-		
-		log.info("------inner eager/lazy----");
-		List<Hotel> lista2=this.hotelService.buscarHotelInnerJoinService("Familiar");
-		for(Hotel h: lista2) {
-			log.info("hotel---- "+h.getNombre()+" "+h.getDireccion());
-			//log.info("habitaciones----"+h.getHabitaciones());
-			for(Habitacion ha:h.getHabitaciones()) {
-				log.info("habitacion---- "+ha);
-			}
-		}
-		
-		log.info("------fetch----");
-		List<Hotel> lista3=this.hotelService.buscarHotelJoinFetchService("Familiar");
-		for(Hotel h: lista3) {
-			log.info("hotel---- "+h.getNombre()+" "+h.getDireccion());
-			for(Habitacion ha:h.getHabitaciones()) {
-				log.info("habitacion---- "+ha);
-			}
-		}
+//		log.info("------Where----");
+//		List<Hotel> lista=this.hotelService.buscarHotelJoinWhereService("Familiar");
+//		for(Hotel h: lista) {
+//			log.info("imprimiendo---- "+h.getNombre()+" "+h.getDireccion());
+//		}
+//		
+//		log.info("------inner eager/lazy----");
+//		List<Hotel> lista2=this.hotelService.buscarHotelInnerJoinService("Familiar");
+//		for(Hotel h: lista2) {
+//			log.info("hotel---- "+h.getNombre()+" "+h.getDireccion());
+//			//log.info("habitaciones----"+h.getHabitaciones());
+//			for(Habitacion ha:h.getHabitaciones()) {
+//				log.info("habitacion---- "+ha);
+//			}
+//		}
+//		
+//		log.info("------fetch----");
+//		List<Hotel> lista3=this.hotelService.buscarHotelJoinFetchService("Familiar");
+//		for(Hotel h: lista3) {
+//			log.info("hotel---- "+h.getNombre()+" "+h.getDireccion());
+//			for(Habitacion ha:h.getHabitaciones()) {
+//				log.info("habitacion---- "+ha);
+//			}
+//		}
 		
 		/////////////////taller 29
 		//inner
