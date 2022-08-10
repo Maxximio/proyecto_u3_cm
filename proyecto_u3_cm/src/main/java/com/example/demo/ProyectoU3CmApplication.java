@@ -8,11 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.repository.model.Factura;
+import com.example.demo.repository.model.CuentaBancaria;
 import com.example.demo.repository.model.Habitacion;
 import com.example.demo.repository.model.Hotel;
-import com.example.demo.service.IFacturaService;
 import com.example.demo.service.IHotelService;
+import com.example.demo.service.ITransferenciaService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +26,7 @@ public class ProyectoU3CmApplication implements CommandLineRunner{
 	private IHotelService hotelService;
 	
 	@Autowired
-	private IFacturaService facturaService;
+	private ITransferenciaService transferenciaService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU3CmApplication.class, args);
@@ -34,20 +34,37 @@ public class ProyectoU3CmApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-	
+		
+		/////////////////taller 31
+		
+		//cuentas creadas: cu1->300 "123"
+		//cu2->100 "321"
+		
+		this.transferenciaService.realizarTransferenciaFachada("123", "321", new BigDecimal(20));
+		
+//		log.info("------fetch----");
+//		List<Hotel> lista3=this.hotelService.buscarHotelJoinFetchService("Familiar");
+//		for(Hotel h: lista3) {
+//			log.info("hotel---- "+h.getNombre()+" "+h.getDireccion());
+//			for(Habitacion ha:h.getHabitaciones()) {
+//				log.info("habitacion---- "+ha);
+//			}
+//		}
+		
+		
 		/////////////////tarea 27
 		
-		log.info("------where----");
-		List<Factura> lista=this.facturaService.buscarJoinWhereService(new BigDecimal(150));
-		for(Factura fact: lista) {
-			log.info("imprimiendo where----"+fact);
-		}
-		
-		log.info("------fetch----");
-		List<Factura> lista2=this.facturaService.buscarJoinFetchService(new BigDecimal(150));
-		for(Factura fact: lista2) {
-			log.info("imprimiendo fetch----"+fact);
-		}
+//		log.info("------where----");
+//		List<Factura> lista=this.facturaService.buscarJoinWhereService(new BigDecimal(150));
+//		for(Factura fact: lista) {
+//			log.info("imprimiendo where----"+fact);
+//		}
+//		
+//		log.info("------fetch----");
+//		List<Factura> lista2=this.facturaService.buscarJoinFetchService(new BigDecimal(150));
+//		for(Factura fact: lista2) {
+//			log.info("imprimiendo fetch----"+fact);
+//		}
 		
 		/////////////////tarea 26
 		
