@@ -16,9 +16,9 @@ import com.example.demo.repository.model.CuentaBancaria;
 
 @Repository
 @Transactional
-public class CuentaBancariaImpl implements ICuentaBancariaRepo{
+public class CuentaBancariaRepoImpl implements ICuentaBancariaRepo{
 
-	private static final Logger log =LoggerFactory.getLogger(CuentaBancariaImpl.class);
+	private static final Logger log =LoggerFactory.getLogger(CuentaBancariaRepoImpl.class);
 	
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -35,7 +35,7 @@ public class CuentaBancariaImpl implements ICuentaBancariaRepo{
 	}
 
 	@Override
-	@Transactional(value = TxType.NOT_SUPPORTED) 
+	//@Transactional(value = TxType.NOT_SUPPORTED) 
 	public CuentaBancaria buscarPorNumero(String numeroCuenta) {
 		
 		log.info("Transaccion activa Repo: "

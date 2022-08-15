@@ -25,4 +25,10 @@ public interface IHotelRepository {
 	public List<Hotel> buscarHotelInnerJoin();
 	
 	public List<Hotel> buscarHotelOuterJoinLeft();
+	
+	//unitarias ejemplo 4
+	    
+	 public void actualizar(Hotel hotel);
+	    
+	 public Hotel buscarPorNombre(String nombre);
 }

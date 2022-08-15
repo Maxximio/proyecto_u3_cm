@@ -62,4 +62,9 @@ public class TransferenciaServiceImpl implements ITransferenciaService {
 		this.realizarTransferencia(CtaOrigen, CtaDestino, monto);
 	}
 
+	@Override
+	public CuentaBancaria buscarPorNumero(String numeroCuenta) {
+		return this.cuentaBancariaRepo.buscarPorNumero(numeroCuenta);
+	}
+
 }

@@ -40,7 +40,7 @@ public class ProyectoU3CmApplication implements CommandLineRunner{
 		//cuentas creadas: cu1->300 "123"
 		//cu2->100 "321"
 		
-		this.transferenciaService.realizarTransferenciaFachada("123", "321", new BigDecimal(20));
+		//this.transferenciaService.realizarTransferenciaFachada("123", "321", new BigDecimal(5.25));
 		
 //		log.info("------fetch----");
 //		List<Hotel> lista3=this.hotelService.buscarHotelJoinFetchService("Familiar");

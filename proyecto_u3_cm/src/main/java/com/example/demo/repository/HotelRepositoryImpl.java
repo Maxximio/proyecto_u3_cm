@@ -31,7 +31,6 @@ public class HotelRepositoryImpl implements IHotelRepository{
 		this.entityManager.persist(hotel);
 	}
 	
-	
 	/////////taller 30
 
 	@Override
@@ -108,6 +107,18 @@ public class HotelRepositoryImpl implements IHotelRepository{
 		TypedQuery<Hotel> myQuery=this.entityManager.createQuery(""
 				+ "select h from Hotel h left join h.habitacion ha", Hotel.class);
 		return myQuery.getResultList();
+	}
+
+	@Override
+	public void actualizar(Hotel hotel) {
+		this.entityManager.merge(hotel);
+	}
+
+	@Override
+	public Hotel buscarPorNombre(String nombre) {
+		TypedQuery<Hotel> myQuery=this.entityManager.createQuery("SELECT h FROM Hotel h WHERE h.nombre= :datoNombre", Hotel.class);
+        myQuery.setParameter("datoNombre", nombre);
+        return myQuery.getSingleResult();
 	}
 
 	

@@ -11,4 +11,6 @@ public interface ITransferenciaService {
 	public void realizarTransferencia(String CtaOrigen,String CtaDestino,BigDecimal monto);
 
 	public void realizarTransferenciaFachada(String CtaOrigen, String CtaDestino, BigDecimal monto);
+	
+	public CuentaBancaria buscarPorNumero(String numeroCuenta);
 }
