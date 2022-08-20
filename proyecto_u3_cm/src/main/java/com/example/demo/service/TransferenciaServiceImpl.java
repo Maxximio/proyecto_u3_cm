@@ -6,9 +6,10 @@ import java.time.LocalDateTime;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.demo.repository.ICuentaBancariaRepo;
 import com.example.demo.repository.ITransferenciaRepo;
 import com.example.demo.repository.model.CuentaBancaria;
@@ -17,6 +18,8 @@ import com.example.demo.repository.model.Transferencia;
 @Service
 public class TransferenciaServiceImpl implements ITransferenciaService {
 
+	private static final Logger log =LoggerFactory.getLogger(TransferenciaServiceImpl.class);
+	
 	@Autowired
 	private ITransferenciaRepo transferenciaRepo;
 	
@@ -48,6 +51,16 @@ public class TransferenciaServiceImpl implements ITransferenciaService {
 		trans.setMonto(monto);
 		//seteamos la transferencia
 		this.transferenciaRepo.insertar(trans);
+		
+		if(origen.getTipo().equals("Ahorros")) {
+			log.info("Error"+" se returna");
+			throw new RuntimeException();
+		}
+		if(saldoOrigen.compareTo(monto)>0) {
+			log.info("Error"+" se returna");
+			throw new RuntimeException();
+		}
+		log.info("Llego al final");
 		//insertamos la transferencia
 	}
 

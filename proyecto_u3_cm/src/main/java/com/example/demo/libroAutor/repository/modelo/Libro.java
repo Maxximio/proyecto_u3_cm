@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class Libro {
 
 	@Id
-	@Column(name="libr_id")
+	@Column(name="lib_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "libr_id_sec")
 	@SequenceGenerator(name = "libr_id_sec", sequenceName = "libr_id_sec", allocationSize = 1)
 	private Integer id;

@@ -34,13 +34,17 @@ public class ProyectoU3CmApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+	
+		/////////////////taller 32
+		
+		this.transferenciaService.realizarTransferenciaFachada("123", "321", new BigDecimal(2));
 		
 		/////////////////taller 31
 		
 		//cuentas creadas: cu1->300 "123"
 		//cu2->100 "321"
 		
-		//this.transferenciaService.realizarTransferenciaFachada("123", "321", new BigDecimal(5.25));
+		//this.transferenciaService.realizarTransferenciaFachada("123", "321", new BigDecimal(2));
 		
 //		log.info("------fetch----");
 //		List<Hotel> lista3=this.hotelService.buscarHotelJoinFetchService("Familiar");

@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import static org.assertj.core.api.Assertions.assertThat;
+//import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
@@ -37,7 +37,7 @@ public class Ejemplo2 {
 		List<Hotel> Hoteles = this.hotelService.buscarHotelInnerJoinService(tipo);
 
 		for (Hotel h : Hoteles) {
-			LOG.info(Hoteles);
+			LOG.info("los hoteles que tenemos son: " +h);
 		}
 
 		assertEquals(1, Hoteles.size());
