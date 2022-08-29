@@ -37,7 +37,7 @@ public class ProyectoU3CmApplication implements CommandLineRunner{
 	
 		/////////////////taller 32
 		
-		this.transferenciaService.realizarTransferenciaFachada("123", "321", new BigDecimal(2));
+		//this.transferenciaService.realizarTransferenciaFachada("123", "321", new BigDecimal(2));
 		
 		/////////////////taller 31
 		

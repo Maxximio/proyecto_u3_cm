@@ -2,9 +2,14 @@ package com.example.demo.service.funcional;
 
 public class PersonaSupplierImpl implements IPersonaSupplier<String>{
 
+//	@Override
+//	public String getNombre() {
+//		return "Carlos";
+//	}
+
 	@Override
-	public String getNombre() {
-		return "Carlos";
+	public String getUbicacion() {
+		return "Quito, Ecuador";
 	}
 
 }
