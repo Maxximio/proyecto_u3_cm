@@ -9,6 +9,7 @@ public class GestorCajero {
 		for(String cliente: cajero.getClientes()) {
 			atenderCliente(cliente);
 		}
+		
 	}
 	
 	private void atenderCliente(String cliente){
