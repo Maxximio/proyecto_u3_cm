@@ -1,5 +1,6 @@
 package com.example.demo.service.funcional;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -24,32 +25,65 @@ public class MainInterfacesFuncionales {
 
 		ConsumoMetodosHighOrder metodosHO = new ConsumoMetodosHighOrder();
 
+		//Tarea 34
+		
+		List<String> lista = new ArrayList<>();
+		lista.add("Carlos");
+		lista.add("Raul");
+		lista.add("Camila");
+		lista.add("Roberto");
+		lista.add("Laura");
 		
 		//Supplier
-		log.info("JAVA Supplier: ");
-		Stream<String> test=Stream.generate(()->"Edison 3").limit(2);
-		test.forEach(cadena -> log.info(cadena));//esta parte es consumer
+		log.info("-------> JAVA Supplier: ");
+		
+		Stream<String> test=Stream.generate(()->"Se ha generado el estudiante: "+lista.get(3)).limit(1);
+		test.forEach(cadena -> log.info(cadena));
 		
 		//Consumer
-		log.info("JAVA Consumer: ");
-		List<Integer>listaNumeros=Arrays.asList(1,2,3,4,5);
-		listaNumeros.forEach(numero->log.info(numero.toString()));
+		log.info("-------> JAVA Consumer: ");
+		lista.forEach(cadena->log.info("Estudiante:" +cadena));
 		
 		//Predicate
-		log.info("JAVA Predicate: ");
-		Stream<Integer> nuevaLista= listaNumeros.stream().filter(numero->prueba(numero));
-		nuevaLista.forEach(cadena->log.info(cadena.toString()));//numero->(numero>=3)
+		log.info("-------> JAVA Predicate: ");
+		Stream<String> nuevaLista= lista.stream().filter(cadena->cadena.contains("a"));
+		nuevaLista.forEach(cadena->log.info("Estudiantes con a: "+cadena));//numero->(numero>=3)
 		
 		//Function
-		log.info("JAVA Function: ");
-		Stream<String> listaCambiada=listaNumeros.stream().map(numeroLista->{
-			Integer valor=numeroLista+1;
-			String cadena="num: " +valor.toString();
-			return cadena;
+		log.info("-------> JAVA Function: ");
+		Stream<Integer> listaCambiada=lista.stream().map(longitud->{
+			Integer valor=0;
+				String algo=longitud;
+				valor=valor+algo.length();
+			return valor;
 			});
+		listaCambiada.forEach(cadena->log.info("numero de char: "+cadena.toString()));	
+		
+		//Supplier
+//		log.info("JAVA Supplier: ");
+//		Stream<String> test=Stream.generate(()->"Edison 3").limit(2);
+//		test.forEach(cadena -> log.info(cadena));//esta parte es consumer
+		
+		//Consumer
+//		log.info("JAVA Consumer: ");
+//		List<Integer>listaNumeros=Arrays.asList(1,2,3,4,5);
+//		listaNumeros.forEach(numero->log.info(numero.toString()));
+		
+		//Predicate
+//		log.info("JAVA Predicate: ");
+//		Stream<Integer> nuevaLista= listaNumeros.stream().filter(numero->prueba(numero));
+//		nuevaLista.forEach(cadena->log.info(cadena.toString()));//numero->(numero>=3)
+		
+		//Function
+//		log.info("JAVA Function: ");
+//		Stream<String> listaCambiada=listaNumeros.stream().map(numeroLista->{
+//			Integer valor=numeroLista+1;
+//			String cadena="num: " +valor.toString();
+//			return cadena;
+//			});
 		
 		//Declarativa: ideas/item
-		listaCambiada.forEach(cadena->imprimir(cadena));
+//		listaCambiada.forEach(cadena->imprimir(cadena));
 		//Imperativa: paso a paso
 //		log.info("JAVA UnaryOperator: ");
 //		for(String valor: ) {
