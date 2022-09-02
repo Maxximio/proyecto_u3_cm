@@ -11,29 +11,29 @@ public class MainParalelo {
 		
 		long tiempoInicial = System.currentTimeMillis();
 		
-		System.out.println("Nombre de hilo: " + Thread.currentThread().getName());
-		CajeroParalelo cajero1 = new CajeroParalelo("Carlos", Arrays.asList("Pepito"));
-		CajeroParalelo cajero2 = new CajeroParalelo("Luis", Arrays.asList("Daniela"));
-		CajeroParalelo cajero3 = new CajeroParalelo("Paul", Arrays.asList("Pedro"));
-
-		CajeroParalelo cajero4 = new CajeroParalelo("Carlos", Arrays.asList("Miguel"));
-		CajeroParalelo cajero5 = new CajeroParalelo("Luis", Arrays.asList("Juan"));
-		CajeroParalelo cajero6 = new CajeroParalelo("Paul", Arrays.asList("Carla"));
+		int random1 = (int) (Math.random()*(5-1)) + 1;
+		int random2 = (int) (Math.random()*(5-1)) + 1;
+		int random3 = (int) (Math.random()*(5-1)) + 1;
+		int random4 = (int) (Math.random()*(5-1)) + 1;
+		int random5 = (int) (Math.random()*(5-1)) + 1;
+		
+		CajeroParalelo cajero1 = new CajeroParalelo("Carlos", Arrays.asList("Pepito","Juanito"));
+		CajeroParalelo cajero2 = new CajeroParalelo("Luis", Arrays.asList("Daniela","Laura"));
+		CajeroParalelo cajero3 = new CajeroParalelo("Paul", Arrays.asList("Pedro","Vicente"));
+		CajeroParalelo cajero4 = new CajeroParalelo("Carla", Arrays.asList("Miguel","Mariana"));
+		CajeroParalelo cajero5 = new CajeroParalelo("Esteban", Arrays.asList("Juan","Sonia"));
 
 		
-		PCCajeroParalelo gestorAtencion1 = new PCCajeroParalelo(cajero1);
+		PCCajeroParalelo gestorAtencion1 = new PCCajeroParalelo(cajero1, random1);
 		gestorAtencion1.start();
-		PCCajeroParalelo gestorAtencion2 = new PCCajeroParalelo(cajero2);
+		PCCajeroParalelo gestorAtencion2 = new PCCajeroParalelo(cajero2, random2);
 		gestorAtencion2.start();
-		PCCajeroParalelo gestorAtencion3 = new PCCajeroParalelo(cajero3);
+		PCCajeroParalelo gestorAtencion3 = new PCCajeroParalelo(cajero3, random3);
 		gestorAtencion3.start();
-		
-		PCCajeroParalelo gestorAtencion4 = new PCCajeroParalelo(cajero4);
+		PCCajeroParalelo gestorAtencion4 = new PCCajeroParalelo(cajero4, random4);
 		gestorAtencion4.start();
-		PCCajeroParalelo gestorAtencion5 = new PCCajeroParalelo(cajero5);
+		PCCajeroParalelo gestorAtencion5 = new PCCajeroParalelo(cajero5, random5);
 		gestorAtencion5.start();
-		PCCajeroParalelo gestorAtencion6 = new PCCajeroParalelo(cajero6);
-		gestorAtencion6.start();
 		
 		long tiempoFinal = System.currentTimeMillis();
 		long tiempoTranscurrido = (tiempoFinal - tiempoInicial) / 1000;
